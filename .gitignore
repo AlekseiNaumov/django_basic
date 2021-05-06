@@ -1,8 +1,5 @@
 /venv/
-
 .DS_Store
-
 /.idea/
-
 geekshop/mainapp/__pycache__/
 geekshop/geekshop/__pycache__/
