@@ -1,14 +1,14 @@
 from django.shortcuts import render
+from .models import ProductCategory
 
 
 def products(request):
-    links_menu = {
-        'links': [
-            {'href': 'mainapp:products', 'name': 'все'},
-            {'href': 'mainapp:products', 'name': 'дом'},
-            {'href': 'mainapp:products', 'name': 'офис'},
-            {'href': 'mainapp:products', 'name': 'модерн'},
-            {'href': 'mainapp:products', 'name': 'классика'},
-        ]
-    }
+    categories = ProductCategory.objects.all()
+    links_name = []
+    for category in categories:
+        category = {'href': 'mainapp:products', 'name': category.name}
+        links_name.append(category)
+
+    links_menu = {'links': links_name}
+
     return render(request, 'products.html', context=links_menu)
